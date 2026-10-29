@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A little less scrolling, a little more somewhere. Find thoughtful weekend escapes with Weekend Atlas."
+    />
+    <meta name="theme-color" content="#f5f3ed" />
+    <title>Weekend Atlas — Find your somewhere</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="#" aria-label="Weekend Atlas home">
+        <span class="wordmark__symbol" aria-hidden="true">w.</span>
+        <span>weekend<br />atlas</span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a class="nav-link nav-link--active" href="#discover">Discover</a>
+        <a class="nav-link" href="#collections">Collections</a>
+        <a class="nav-link" href="#fieldnotes">Field notes</a>
+      </nav>
+      <div class="header-actions">
+        <button class="saved-button" id="saved-toggle" type="button" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z" /></svg>
+          <span>Saved</span><span class="saved-count" id="saved-count">0</span>
+        </button>
+        <a class="header-cta" href="#discover">Find your somewhere <span aria-hidden="true">↗</span></a>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <img
+          class="hero__image"
+          src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2400&q=88"
+          alt="A quiet wooden cabin beside a mountain lake at sunset"
+        />
+        <div class="hero__veil"></div>
+        <div class="hero__content">
+          <p class="eyebrow eyebrow--light"><span class="eyebrow__line"></span> A FIELD GUIDE FOR YOUR DAYS OFF</p>
+          <h1 id="hero-title">A little less<br />scrolling. A little<br /><em>more somewhere.</em></h1>
+          <p class="hero__intro">Small escapes, good stories, and the kind of weekend that stays with you.</p>
+          <a class="round-link" href="#discover">
+            <span>Find your next escape</span>
+            <span class="round-link__icon" aria-hidden="true">↘</span>
+          </a>
+        </div>
+        <div class="hero__note"><span>01 — 06</span><span>THE ART OF GETTING AWAY</span></div>
+        <div class="hero__side-note">GO A LITTLE FURTHER</div>
+        <div class="hero__stamp" aria-hidden="true"><span>TAKE<br />THE<br />LONG<br />WAY</span><span class="stamp-star">✳</span></div>
+      </section>
+
+      <section class="discover section-wrap" id="discover" aria-labelledby="discover-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow__line"></span> YOUR NEXT CHAPTER</p>
+            <h2 id="discover-title">The weekend <em>edit.</em></h2>
+          </div>
+          <p class="section-heading__aside">Considered places for unhurried days.<br />Pick a mood. We'll find a way.</p>
+        </div>
+
+        <div class="explore-bar">
+          <label class="search-field">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" /><path d="m16 16 4.5 4.5" /></svg>
+            <span class="sr-only">Search places or experiences</span>
+            <input id="search-input" type="search" placeholder="A place, a feeling, a little escape..." autocomplete="off" />
+          </label>
+          <span class="explore-divider" aria-hidden="true"></span>
+          <label class="distance-field">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" /><circle cx="12" cy="10" r="2.5" /></svg>
+            <span class="sr-only">Choose a region</span>
+            <select id="region-select">
+              <option value="all">Anywhere, really</option>
+              <option value="Asia">Asia</option>
+              <option value="Europe">Europe</option>
+              <option value="Americas">Americas</option>
+              <option value="Africa">Africa</option>
+            </select>
+            <span class="select-chevron" aria-hidden="true">⌄</span>
+          </label>
+          <button class="search-submit" id="search-submit" type="button">Find a feeling <span aria-hidden="true">↗</span></button>
+        </div>
+
+        <div class="filter-row">
+          <div class="category-list" role="group" aria-label="Filter by escape style">
+            <button class="category-chip is-active" data-category="all" type="button">All escapes <span>06</span></button>
+            <button class="category-chip" data-category="nature" type="button">Into nature</button>
+            <button class="category-chip" data-category="slow" type="button">Take it slow</button>
+            <button class="category-chip" data-category="culture" type="button">Culture fix</button>
+            <button class="category-chip" data-category="coast" type="button">By the water</button>
+          </div>
+          <p class="result-count" id="result-count" aria-live="polite">06 places to begin</p>
+        </div>
+
+        <div class="places-grid" id="places-grid">
+          <article class="place-card place-card--feature" data-category="nature" data-region="Asia" data-search="meghalaya india living root bridges mist forest nature hike">
+            <a class="place-card__image-wrap" href="#fieldnotes" aria-label="Explore the living roots of Meghalaya">
+              <img src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1100&q=85" alt="Misty green forest canopy" loading="lazy" />
+              <span class="image-label">THE WILD EDIT</span>
+            </a>
+            <button class="save-place" type="button" aria-label="Save Meghalaya, India" aria-pressed="false" data-place="meghalaya">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z" /></svg>
+            </button>
+            <div class="place-card__body">
+              <div class="place-card__meta"><span>INDIA <i>·</i> ASIA</span><span>✳ 4.9</span></div>
+              <h3>The living roots of Meghalaya</h3>
+              <p>Walk ancient bridges through a forest that feels like another world.</p>
+              <div class="place-card__footer"><span><strong>3 days</strong> <i>·</i> from Guwahati</span><a href="#fieldnotes" aria-label="Read the Meghalaya field note">↗</a></div>
+            </div>
+          </article>
+
+          <article class="place-card" data-category="coast" data-region="Europe" data-search="alentejo portugal coast ocean cliffs slow">
+            <a class="place-card__image-wrap" href="#fieldnotes" aria-label="Explore Portugal's Alentejo coast">
+              <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=85" alt="Waves rolling toward a quiet coastline" loading="lazy" />
+              <span class="image-label">COASTAL DAYDREAM</span>
+            </a>
+            <button class="save-place" type="button" aria-label="Save the Alentejo coast, Portugal" aria-pressed="false" data-place="alentejo">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z" /></svg>
+            </button>
+            <div class="place-card__body">
+              <div class="place-card__meta"><span>PORTUGAL <i>·</i> EUROPE</span><span>✳ 4.8</span></div>
+              <h3>Somewhere on the Alentejo coast</h3>
+              <p>Salt air, cliff paths, and no particular reason to check the time.</p>
+              <div class="place-card__footer"><span><strong>2 days</strong> <i>·</i> from Lisbon</span><a href="#fieldnotes" aria-label="Read the Alentejo field note">↗</a></div>
+            </div>
+          </article>
+
+          <article class="place-card" data-category="culture" data-region="Asia" data-search="kyoto japan backstreets tea culture city">
+            <a class="place-card__image-wrap" href="#fieldnotes" aria-label="Explore Kyoto's quiet backstreets">
+              <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=900&q=85" alt="Traditional Kyoto street in warm evening light" loading="lazy" />
+              <span class="image-label">A SLOW CITY BREAK</span>
+            </a>
+            <button class="save-place" type="button" aria-label="Save Kyoto, Japan" aria-pressed="false" data-place="kyoto">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z" /></svg>
+            </button>
+            <div class="place-card__body">
+              <div class="place-card__meta"><span>JAPAN <i>·</i> ASIA</span><span>✳ 4.9</span></div>
+              <h3>Kyoto, before the city wakes</h3>
+              <p>Lantern-lit lanes, a good cup of tea, and mornings made for wandering.</p>
+              <div class="place-card__footer"><span><strong>2 days</strong> <i>·</i> from Osaka</span><a href="#fieldnotes" aria-label="Read the Kyoto field note">↗</a></div>
+            </div>
+          </article>
+
+          <article class="place-card" data-category="slow" data-region="Americas" data-search="oaxaca mexico market color food slow culture">
+            <a class="place-card__image-wrap" href="#fieldnotes" aria-label="Explore the colors of Oaxaca">
+              <img src="https://images.unsplash.com/photo-1512813195386-6cf811ad3542?auto=format&fit=crop&w=900&q=85" alt="Colorful buildings along a sunlit street" loading="lazy" />
+              <span class="image-label">FOLLOW THE FLAVOR</span>
+            </a>
+            <button class="save-place" type="button" aria-label="Save Oaxaca, Mexico" aria-pressed="false" data-place="oaxaca">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z" /></svg>
+            </button>
+            <div class="place-card__body">
+              <div class="place-card__meta"><span>MEXICO <i>·</i> AMERICAS</span><span>✳ 4.7</span></div>
+              <h3>Oaxaca, one long lunch</h3>
+              <p>Market mornings and the sort of meal that turns into a whole afternoon.</p>
+              <div class="place-card__footer"><span><strong>3 days</strong> <i>·</i> stay a little longer</span><a href="#fieldnotes" aria-label="Read the Oaxaca field note">↗</a></div>
+            </div>
+          </article>
+
+          <article class="place-card" data-category="nature" data-region="Africa" data-search="atlas mountains morocco mountain trail village nature">
+            <a class="place-card__image-wrap" href="#fieldnotes" aria-label="Explore Morocco's Atlas Mountains">
+              <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85" alt="Mountain peaks rising into the clouds" loading="lazy" />
+              <span class="image-label">UP IN THE ATLAS</span>
+            </a>
+            <button class="save-place" type="button" aria-label="Save the Atlas Mountains, Morocco" aria-pressed="false" data-place="atlas">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z" /></svg>
+            </button>
+            <div class="place-card__body">
+              <div class="place-card__meta"><span>MOROCCO <i>·</i> AFRICA</span><span>✳ 4.8</span></div>
+              <h3>A slower way through the Atlas</h3>
+              <p>Red-earth trails and village tea, with a mountain view at every turn.</p>
+              <div class="place-card__footer"><span><strong>3 days</strong> <i>·</i> from Marrakech</span><a href="#fieldnotes" aria-label="Read the Atlas field note">↗</a></div>
+            </div>
+          </article>
+
+          <article class="place-card" data-category="coast" data-region="Americas" data-search="big sur california coast ocean road cliffs">
+            <a class="place-card__image-wrap" href="#fieldnotes" aria-label="Explore Big Sur's coastal road">
+              <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=900&q=85" alt="Blue ocean waves meeting the shore" loading="lazy" />
+              <span class="image-label">TAKE THE COAST ROAD</span>
+            </a>
+            <button class="save-place" type="button" aria-label="Save Big Sur, California" aria-pressed="false" data-place="bigsur">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z" /></svg>
+            </button>
+            <div class="place-card__body">
+              <div class="place-card__meta"><span>CALIFORNIA <i>·</i> AMERICAS</span><span>✳ 4.9</span></div>
+              <h3>Big Sur, windows down</h3>
+              <p>One winding road, a thermos of coffee, and the Pacific all to yourself.</p>
+              <div class="place-card__footer"><span><strong>2 days</strong> <i>·</i> from San Francisco</span><a href="#fieldnotes" aria-label="Read the Big Sur field note">↗</a></div>
+            </div>
+          </article>
+        </div>
+        <div class="empty-state" id="empty-state" hidden>
+          <span aria-hidden="true">✳</span>
+          <h3>No escapes on this map just yet.</h3>
+          <p>Try a different search or open up your filters.</p>
+          <button class="text-button" id="reset-filters" type="button">Show me everywhere ↗</button>
+        </div>
+        <div class="discover-bottom"><span>THE WORLD IS WIDE. YOUR WEEKEND IS YOURS.</span><a href="#collections">A few more ways to wander <span aria-hidden="true">↓</span></a></div>
+      </section>
+
+      <section class="collections" id="collections" aria-labelledby="collections-title">
+        <div class="collections__intro">
+          <p class="eyebrow eyebrow--light"><span class="eyebrow__line"></span> A GOOD PLACE TO START</p>
+          <h2 id="collections-title">Go by <em>feeling.</em></h2>
+          <p>Not every getaway needs a plan. Sometimes all you need is a direction.</p>
+        </div>
+        <a class="collection-tile collection-tile--forest" href="#discover" data-collection="nature">
+          <span class="collection-tile__number">01 / OUTSIDE</span>
+          <span class="collection-tile__title">Take the<br /><em>scenic route.</em></span>
+          <span class="collection-tile__link">Find your wild <b aria-hidden="true">↗</b></span>
+        </a>
+        <a class="collection-tile collection-tile--coast" href="#discover" data-collection="coast">
+          <span class="collection-tile__number">02 / WATERLINE</span>
+          <span class="collection-tile__title">Let the tide<br /><em>set the pace.</em></span>
+          <span class="collection-tile__link">Follow the water <b aria-hidden="true">↗</b></span>
+        </a>
+        <a class="collection-tile collection-tile--city" href="#discover" data-collection="culture">
+          <span class="collection-tile__number">03 / IN GOOD COMPANY</span>
+          <span class="collection-tile__title">Get lost<br /><em>on purpose.</em></span>
+          <span class="collection-tile__link">Wander a little <b aria-hidden="true">↗</b></span>
+        </a>
+      </section>
+
+      <section class="fieldnotes section-wrap" id="fieldnotes" aria-labelledby="fieldnotes-title">
+        <div class="fieldnotes__mark" aria-hidden="true">“</div>
+        <div class="fieldnotes__content">
+          <p class="eyebrow"><span class="eyebrow__line"></span> A NOTE TO TAKE WITH YOU</p>
+          <h2 id="fieldnotes-title">The best plan is often<br />to <em>leave a little room.</em></h2>
+          <p>For the unplanned turn, the extra cup of chai, the view you almost drove past. We collect places that reward showing up without too much of a plan.</p>
+          <a class="underlined-link" href="#discover">Find a little room <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="fieldnotes__image">
+          <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1200&q=85" alt="A quiet mountain landscape in the early morning" loading="lazy" />
+          <span>TAKE YOUR TIME. YOU'RE RIGHT ON IT.</span>
+        </div>
+      </section>
+
+      <section class="newsletter">
+        <div class="newsletter__left">
+          <p class="eyebrow eyebrow--light"><span class="eyebrow__line"></span> A LETTER FROM SOMEWHERE</p>
+          <h2>Make room for<br /><em>a little wonder.</em></h2>
+        </div>
+        <div class="newsletter__right">
+          <p>One thoughtful escape in your inbox, every other Sunday. No noise, just somewhere new.</p>
+          <form id="newsletter-form" class="newsletter-form">
+            <label class="sr-only" for="email-input">Your email address</label>
+            <input id="email-input" type="email" placeholder="Your email address" required />
+            <button type="submit" aria-label="Subscribe to the newsletter">Count me in <span aria-hidden="true">↗</span></button>
+          </form>
+          <p class="form-message" id="form-message" aria-live="polite">A good letter. Never a crowded inbox.</p>
+        </div>
+        <div class="newsletter__sun" aria-hidden="true">✳</div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="wordmark wordmark--footer" href="#" aria-label="Weekend Atlas home">
+        <span class="wordmark__symbol" aria-hidden="true">w.</span>
+        <span>weekend<br />atlas</span>
+      </a>
+      <p>For wherever the weekend takes you.<br /><span>MADE FOR THE LONG WAY ROUND.</span></p>
+      <div class="footer-links"><a href="#discover">Discover</a><a href="#collections">Collections</a><a href="mailto:hello@weekendatlas.example">Say hello</a></div>
+      <span class="footer-copyright">© <span id="year"></span> WEEKEND ATLAS</span>
+    </footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
